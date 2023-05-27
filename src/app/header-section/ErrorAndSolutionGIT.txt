@@ -1,0 +1,181 @@
+ERROR-1:
+-------------------------------------------------------
+fatal: 'origin' does not appear to be a git repository
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+
+This error message typically occurs when you're trying to push changes to or pull changes
+ from a remote repository that Git can't find or access. This can be caused by a few different issues:
+
+Remote URL is Incorrect: The URL for the remote repository (known as 'origin' by default) might be incorrect.
+You can check the URL of your remote with the following command:
+
+git remote -v
+If the URL is incorrect or it doesn't show any remote, you can add the correct one using:
+
+git remote add origin <your_remote_repository_URL>
+Replace <your_remote_repository_URL> with the URL of your remote repository, 
+which should look something like https://github.com/username/repo.git or git@github.com:username/repo.git.
+
+Access Rights: The error message suggests there could be an issue with access rights. Make sure you have 
+permission to access the remote repository. If you're using SSH to connect to the repository, make sure your 
+public key is added to your GitHub account. If you're using HTTPS, you might need to enter your username and password.
+
+Network Issues: There might be a network issue that's preventing you from connecting to the remote repository. 
+Check your internet connection, and if you're behind a firewall or proxy, make sure your Git client is configured to work with it.
+
+Repository Doesn't Exist: The remote repository might not exist. If the repository was deleted, or if the URL was 
+entered incorrectly when the remote was added, this error could occur. Check that the repository exists by visiting 
+the URL in your web browser.
+
+If none of the above solutions work, it might be a good idea to clone the repository again in a new directory (if possible),
+make your changes there, and then try pushing again. This will ensure that your local repository is correctly linked to the remote.
+
+
+
+
+ERROR -2
+-----------------------------------------
+how to delete the repository in github
+
+Deleting a repository on GitHub is a straightforward process, but it's also irreversible: once a repository is deleted,
+it cannot be recovered. Make sure you have a backup of any important data before deleting a repository. Here's how you 
+can delete a repository on GitHub:
+
+Navigate to the Main Page of the Repository: Login to your GitHub account and open the repository you wish to delete.
+
+Go to the Repository Settings: Click on the "Settings" tab. This is usually located at the far right of the tab list 
+at the top of the repository page.
+
+Scroll Down to the "Danger Zone": At the bottom of the settings page, you'll find a section called "Danger Zone".
+
+Click on "Delete This Repository": In the Danger Zone, there's a button that says "Delete this repository".
+
+Confirm the Deletion: GitHub will ask you to confirm the deletion by typing in the name of the repository. 
+Type in the name and click on "I understand the consequences, delete this repository".
+
+And that's it. Your repository will be deleted. Please remember to be careful when deleting repositories. 
+Once a repository is deleted, it can't be restored. Make sure you really want to delete it before you confirm.
+
+
+
+
+
+ERROR -3
+----------------------------------------------------
+how to remove repository from locally
+
+If you want to remove a local Git repository (i.e., a repository on your computer), you simply need to 
+delete the repository's directory (folder).
+
+Here's how you can do it:
+
+Using the command line:
+
+Open your command line tool (Command Prompt on Windows, Terminal on MacOS/Linux), navigate to the directory 
+that contains your repository's folder, and use the rm (short for remove) command to delete it:
+
+# Move to the directory containing the repository
+cd path_to_your_directory
+
+# Remove the entire repository directory
+rm -rf repository_name
+Replace path_to_your_directory with the path to the directory that contains your repository, and replace repository_name 
+with the name of your repository's folder.
+
+Using a file manager:
+
+You can also delete a local repository by using your system's file manager (Windows Explorer on Windows, Finder on MacOS). 
+Navigate to the repository's folder and delete it just like you would delete any other folder.
+
+IMPORTANT: This operation is not reversible. Be absolutely sure that you want to delete the repository. You should also 
+make sure that you've pushed any important changes to your remote repository on GitHub (or any other Git hosting service) 
+before you delete your local repository.
+
+
+
+ERROR -4
+-----------------------------------------------------------
+git remote -v
+origin  https://github.com/chetrajInfo/weekormonthexpenses.git (fetch)
+origin  https://github.com/chetrajInfo/weekormonthexpenses.git (push)
+when i do after removing repository it still show the origin https://github.com/chetrajInfo/weekormonthexpenses.git (fetch)
+
+
+If you deleted your local repository by removing its directory but you're still seeing the remote origin when running 
+git remote -v, it's likely that you're running the command from within another Git repository directory.
+
+In Git, remotes are specific to each repository. When you delete a repository by removing its directory, all information 
+about its remotes is also removed.
+
+Here's what you can do to check:
+
+Run pwd in your terminal (or cd with no arguments on Windows Command Prompt). This command will print the path of the 
+current directory. Make sure that this isn't the path of a Git repository.
+
+Check if you are in a Git repository by running git status. If you see something like "fatal: not a git repository 
+(or any of the parent directories): .git", it means you are not in a Git repository. If you see something else, you 
+are in a Git repository.
+
+If you're in a Git repository and you want to remove the 'origin' remote, you can do so with the following command:
+
+git remote remove origin
+
+After running this command, git remote -v should no longer list 'origin' as a remote.
+
+Again, be careful when removing remotes or deleting repositories. Make sure you're in the correct repository and 
+that you won't lose any important data by removing a remote.
+
+
+
+
+
+ERROR -5
+-------------------------------------------------------
+Reinitialized existing Git repository in D:/WeeklyMonthlyExpenses/weekormonthexpense/.git/ while pushing angular project to github
+
+It seems like you are trying to initialize a Git repository in a directory that already has one (as indicated by the message 
+"Reinitialized existing Git repository"). To push your Angular project to GitHub, you would typically follow these steps:
+
+Step 1: Initialize a Git repository (if not already initialized)
+
+git init
+
+If you get the message "Reinitialized existing Git repository", it means the repository was already initialized, 
+so you can move to the next step.
+
+Step 2: Add the files to the repository
+
+git add .
+This command stages all the files in the directory for commit. The "." represents all files in the current directory 
+and subdirectories.
+
+Step 3: Commit the files
+
+git commit -m "Initial commit"
+
+This command creates a new commit with the changes you staged. Replace "Initial commit" with a message describing the 
+changes you're committing.
+
+Step 4: Add the remote repository
+
+Before you can push your code to GitHub, you need to add the remote repository. You can do this with the git remote add command:
+
+
+git remote add origin https://github.com/chetrajInfo/weekormonthexpenses.git
+Replace the URL with the URL of your repository on GitHub. If a remote called 'origin' already exists and you want to 
+replace it, you can use the git remote set-url command:
+
+
+git remote set-url origin https://github.com/chetrajInfo/weekormonthexpenses.git
+Step 5: Push your code to GitHub
+
+Finally, you can push your code to GitHub with the git push command:
+
+git push -u origin master
+
+This command pushes your code to the 'master' branch of the 'origin' remote. If you're using the 'main' branch 
+(as is now the default on GitHub), replace 'master' with 'main'. The -u flag sets the upstream branch, which makes
+Git remember the parameters for future git push and git pull commands.
