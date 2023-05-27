@@ -1,0 +1,76 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: content-box;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    
+}
+
+form{
+    float: right;
+    margin-right: 300px;
+    padding-top: 150px;
+    
+}
+table{
+    height: 290px; 
+    border: 5px solid white;
+    padding:15px;
+}
+
+input[type="text"], input[type="email"],input[type="number"], input[type="password"]{
+    height: 39px;
+    width: 246px;
+    font-size: 18px;
+    padding-left: 4px;
+}
+input[type="number"]{
+    font-family: 'Times New Roman', Times, serif !important;
+}
+tr{
+    margin-top: 5px;;
+}
+input::placeholder{
+   margin-left: 15px;
+}
+
+button{
+    height:20px;
+    width:100px;
+    padding:10px;
+    margin-left: 60px;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    border-radius: 15px;
+    cursor: pointer;
+}
+caption{
+    display: flex;
+    justify-content: space-between;
+    font-size:x-large;
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: bold;
+}
+.left {
+    /* this will make sure the left content sticks to the left */
+    flex-grow: 1;
+    text-align: left;
+  }
+  
+  .right {
+    /* this will make sure the right content sticks to the right */
+    text-align: right;
+    /* add some space between the right items */
+    margin-left:3px;
+  }
+  span img{
+    height: 30px;
+    width: 30px;
+  }
+
+  button:hover{
+    background-color: antiquewhite;
+    font-weight: bolder;
+    border: 3px solid black;
+  }

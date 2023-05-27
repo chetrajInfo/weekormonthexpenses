@@ -26,7 +26,7 @@ header{
     
 }
 a{
-    padding: 10px 5px 0 5px;
+    padding: 13px 5px 0 5px;
     margin-top: 33px;
     margin-left:10px;
     background-color: rgb(233, 233, 149);
@@ -39,4 +39,9 @@ a{
     font-size: 14px;
     font-weight: bold;
     text-align: center;
+}
+
+a:hover{
+   background-color: gray;
+   color: #ffff;
 }
