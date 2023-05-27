@@ -1,0 +1,38 @@
+
+<form #form ="ngForm" (ngSubmit)="saveData()">
+    <caption>
+        <span class="left">Registration</span>
+        <span class="right"><img src="./assets/facebook.png" alt="."></span>
+        <span class="right"><img src="./assets/twitter.png" alt="."></span>
+        </caption>
+   <table>
+  
+    <tr>
+        <td><input type="text" [(ngModel)] ="username" name="username"  [placeholder]="isInputFocusedUser ? '' : 'Username'" 
+            (focus)="isInputFocusedUser = true" 
+            (blur)="isInputFocusedUser = false" >
+        </td>
+    </tr>
+    <tr>
+        <td><input type="email" [(ngModel)] ="email" name="email"  [placeholder]="isInputFocusedEmail ? '' : 'Email'" 
+            (focus)="isInputFocusedEmail = true" 
+            (blur)="isInputFocusedEmail = false"></td>
+    </tr>
+    <tr>
+        <td><input type="number" [(ngModel)] ="phone"  name="phone" [placeholder]="isInputFocusedPhone ? '' : 'Phone'" 
+            (focus)="isInputFocusedPhone = true" 
+            (blur)="isInputFocusedPhone = false"
+            (keypress)="limitPhoneLength($event)"></td>
+    </tr>
+    <tr>
+        <td><input type="password" [(ngModel)] ="pass" name="pass"   [placeholder]="isInputFocusedPass ? '' : 'Password'" 
+            (focus)="isInputFocusedPass = true" 
+            (blur)="isInputFocusedPass = false"></td>
+    </tr>
+    <tr>
+        <td><button type="submit">Submit</button></td>
+    </tr>
+   </table>
+
+       
+</form>
