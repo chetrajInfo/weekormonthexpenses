@@ -9,20 +9,36 @@
   
     <tr>
         <td><input type="text" [(ngModel)] ="username" name="username"  [placeholder]="isInputFocusedUser ? '' : 'Username'" 
+            #usernameField ="ngModel"
+            validUsername
             (focus)="isInputFocusedUser = true" 
             (blur)="isInputFocusedUser = false" >
+
+            <div style ="color: red;" *ngIf="usernameField.errors?.['invalidUsername']">
+                Username is invalid.
+              </div>
         </td>
+      
     </tr>
     <tr>
         <td><input type="email" [(ngModel)] ="email" name="email"  [placeholder]="isInputFocusedEmail ? '' : 'Email'" 
+            #emailField ="ngModel"
+            validEmail 
             (focus)="isInputFocusedEmail = true" 
-            (blur)="isInputFocusedEmail = false"></td>
+            (blur)="isInputFocusedEmail = false">
+
+             <!--validEmail above work selector in emailvalidator directive ts file-->
+            <div style="color:red" *ngIf="emailField.errors?.['invalidEmail'] && emailField.dirty"> <!-- if you won't put emailField.dirty here without typing in email box it will show the error message in first place-->
+                Invalid email.
+              </div>
+        </td>
     </tr>
     <tr>
-        <td><input type="number" [(ngModel)] ="phone"  name="phone" [placeholder]="isInputFocusedPhone ? '' : 'Phone'" 
+        <td><input type="number" [(ngModel)] ="phone"  name="phone"  [maxlength] = "10" [placeholder]="isInputFocusedPhone ? '' : 'Phone'" 
+            (keypress)="limitPhoneLength($event)"
             (focus)="isInputFocusedPhone = true" 
             (blur)="isInputFocusedPhone = false"
-            (keypress)="limitPhoneLength($event)"></td>
+            ></td>
     </tr>
     <tr>
         <td><input type="password" [(ngModel)] ="pass" name="pass"   [placeholder]="isInputFocusedPass ? '' : 'Password'" 
@@ -30,7 +46,11 @@
             (blur)="isInputFocusedPass = false"></td>
     </tr>
     <tr>
-        <td><button type="submit">Submit</button></td>
+        <td><button type="submit">Submit</button>
+            <div style="color: red;" *ngIf="emptyFields"> <!-- This div will only show if emptyFields is true -->
+                All fields must be filled out.
+              </div>
+        </td>
     </tr>
    </table>
 
