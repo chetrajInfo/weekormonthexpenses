@@ -8,6 +8,8 @@ import { RegistrationComponent } from './registration/registration.component';
 import { FormsModule } from '@angular/forms';
 import { UsernameDirective } from './shared/directives/username.directive';
 import { EmailvalidatorDirective } from './shared/directives/emailvalidator.directive';
+import { FooterComponent } from './footer/footer.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -15,12 +17,14 @@ import { EmailvalidatorDirective } from './shared/directives/emailvalidator.dire
     HeaderSectionComponent,
     RegistrationComponent,
     UsernameDirective,
-    EmailvalidatorDirective
+    EmailvalidatorDirective,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
