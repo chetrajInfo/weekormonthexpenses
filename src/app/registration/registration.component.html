@@ -8,18 +8,22 @@
    <table>
   
     <tr>
-        <td><input type="text" [(ngModel)] ="username" name="username"  [placeholder]="isInputFocusedUser ? '' : 'Username'" 
-            #usernameField ="ngModel"
-            validUsername
-            (focus)="isInputFocusedUser = true" 
-            (blur)="isInputFocusedUser = false" >
-
-            <div style ="color: red;" *ngIf="usernameField.errors?.['invalidUsername']">
+        <td>
+            <input type="text" [(ngModel)]="username" name="username" [placeholder]="isInputFocusedUser ? '' : 'Username'" 
+                   #usernameField="ngModel"
+                   validUsername
+                   (focus)="isInputFocusedUser = true" 
+                   (blur)="isInputFocusedUser = false; checkUsername()">
+    
+            <div style="color: red;" *ngIf="usernameField.errors?.['invalidUsername']">
                 Username is invalid.
-              </div>
+            </div>
+            <div style="color: red;" *ngIf="usernameTaken">
+                Username is already taken.
+            </div>
         </td>
-      
     </tr>
+    
     <tr>
         <td><input type="email" [(ngModel)] ="email" name="email"  [placeholder]="isInputFocusedEmail ? '' : 'Email'" 
             #emailField ="ngModel"
@@ -50,6 +54,11 @@
             <div style="color: red;" *ngIf="emptyFields"> <!-- This div will only show if emptyFields is true -->
                 All fields must be filled out.
               </div>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <a routerLink="/login">Already have account.</a>
         </td>
     </tr>
    </table>

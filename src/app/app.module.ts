@@ -10,6 +10,7 @@ import { UsernameDirective } from './shared/directives/username.directive';
 import { EmailvalidatorDirective } from './shared/directives/emailvalidator.directive';
 import { FooterComponent } from './footer/footer.component';
 import { HttpClientModule } from '@angular/common/http';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { HttpClientModule } from '@angular/common/http';
     RegistrationComponent,
     UsernameDirective,
     EmailvalidatorDirective,
-    FooterComponent
+    FooterComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,

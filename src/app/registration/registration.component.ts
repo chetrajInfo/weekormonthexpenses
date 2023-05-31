@@ -91,6 +91,28 @@ resetVariables():void {
     }
   }
 
+  usernameTaken: boolean = false;
+  /*
+
+checkUsername(): void {
+    this.userService.checkUsername(this.username).subscribe(taken => {
+        this.usernameTaken = taken;
+    });
+}
+*/
+
+
+checkUsername() {
+  this.usernameTaken = false; // Reset the flag
+  this.userService.checkUsername(this.username)
+    .subscribe(
+      isTaken => {
+        this.usernameTaken = isTaken; // Set the flag based on the response
+      },
+      error => console.error('Error!', error)
+    );
+}
+
 
 
   //constructor() { }

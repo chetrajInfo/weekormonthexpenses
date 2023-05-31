@@ -14,4 +14,9 @@ export class UserserviceService {
   registerUser(user: User) {
     return this.http.post(this.apiUrl + '/register', user);
   }
+
+  checkUsername(username: string) {
+    return this.http.get<boolean>(`${this.apiUrl}/exists/${username}`);
+}
+
 }
