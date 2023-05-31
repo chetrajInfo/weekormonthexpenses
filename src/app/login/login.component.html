@@ -1,16 +1,16 @@
 <div class="container">
-    <form action="#">
+    <form #formLogin = "ngForm" (ngSubmit)="onCheck(formLogin)">
       <table class="login-table">
         <tr>
           <td>
             <label for="username">Username:</label>
-            <input type="text" id="username" name="username">
+            <input type="text" id="username" [(ngModel)]="username" name="username" >
           </td>
         </tr>
         <tr>
           <td>
             <label for="password">Password:</label>
-            <input type="password" id="password" name="password">
+            <input type="password" id="pass" [(ngModel)] ="pass" name="pass" >
           </td>
         </tr>
         <tr>

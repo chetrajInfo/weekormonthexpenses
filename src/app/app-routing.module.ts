@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './login/login.component';
 import { RegistrationComponent } from './registration/registration.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 const routes: Routes = [
   // Define a route for the login component
@@ -19,6 +20,11 @@ const routes: Routes = [
     path: '',
     redirectTo: '/login',
     pathMatch: 'full'
+  },
+  //Define a route for the Dashboard
+  {
+    path : 'dashboard',
+    component: DashboardComponent
   }
 ];
 
