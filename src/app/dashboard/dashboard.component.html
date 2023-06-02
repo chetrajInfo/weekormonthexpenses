@@ -1,1 +1,52 @@
-<p>dashboard works!</p>
+<div class="side-bar">
+    <div><a herf="">New</a></div>
+    <div><a herf="">Update</a></div>
+    <div><a href="">Search</a></div>
+    <div><a href="">Delete</a></div>
+    <div><a routerLink="/login">Logout</a></div>
+    </div>
+
+    <section>
+
+    <form #save ="ngForm" (ngSubmit)="onSubmit()">
+        <div class="field-design">
+          
+            <label class="lbl" for="caption">New Record</label>
+            <div class="form-design">
+                <label>Expenses Date</label>
+                <input type="date"[(ngModel)]="record.expensesDate" name="date" id="date">
+                <label>From</label>
+                <select  [(ngModel)]="record.expensesFrom" name="from">
+                    <option value="store"> Store</option>
+                    <option value="resturant">Resturant</option>
+                    <option value="rent">House/Rent</option>
+                    <option value="online">Online/Credit</option>
+                    <option value="vehicle">Vehicle</option>
+                    <option value="other">Others</option>
+                </select>
+            
+            <label>Business Name</label>
+            <input type="text" [(ngModel)]="record.businessName" name="business" id="business">
+
+            <label>Total Amount</label>
+            <input type="number" [(ngModel)]="record.totalAmount"   name="amount" id="amount">
+
+            <!--
+            <label>Upload Receipt Image</label>
+            <input type="file" (change)="handleFileInput($any($event.target).files)" name="receipt" id="receipt">
+            -->
+
+
+
+            <label for="notes">Notes:</label>
+            <textarea id="notes" [(ngModel)]="record.notes" name="notes"></textarea><br>
+            
+        </div>
+
+           <div class="click"><input type="submit" name="save" id="save" value="Save"></div> 
+           <div class="click"><input type="button" (click)="cancel()"  name="save" id="cancel" value="Cancel"></div> 
+        </div> 
+    </form>
+    
+
+</section>

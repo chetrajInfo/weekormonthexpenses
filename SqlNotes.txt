@@ -1,0 +1,24 @@
+use weeklyexpenses;
+select * from userinfo;
+select * from logininfo;
+select * from newrecord;
+insert into userinfo values (1001, 'testuser1@email.com', 'User@1', '1234567890', 'testuser1'),
+(1002, 'testuser2@email.com', 'User@2', '1234598760', 'testuser2'),
+(1003, 'testuser2@email.com', 'User@3', '1234587690', 'testuser3');
+
+
+-- Delete all records from the table
+DELETE FROM userinfo;
+
+-- Reset autoincrement value
+ALTER TABLE userinfo AUTO_INCREMENT = 1001;
+ALTER TABLE logininfo AUTO_INCREMENT = 1001;
+ALTER TABLE newrecord auto_increment = 1001;
+
+-- Disable safe mode
+SET SQL_SAFE_UPDATES = 0;
+
+-- Enable safe mode
+SET SQL_SAFE_UPDATES = 1;
+
+truncate table newrecord;
