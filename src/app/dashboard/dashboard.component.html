@@ -8,7 +8,7 @@
 
     <section>
 
-    <form #save ="ngForm" (ngSubmit)="onSubmit()">
+    <form #save ="ngForm" (ngSubmit)="onSubmit()" enctype="multipart/form-data">
         <div class="field-design">
           
             <label class="lbl" for="caption">New Record</label>
@@ -31,10 +31,10 @@
             <label>Total Amount</label>
             <input type="number" [(ngModel)]="record.totalAmount"   name="amount" id="amount">
 
-            <!--
+            
             <label>Upload Receipt Image</label>
             <input type="file" (change)="handleFileInput($any($event.target).files)" name="receipt" id="receipt">
-            -->
+            
 
 
 

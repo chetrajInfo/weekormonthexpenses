@@ -23,10 +23,11 @@ public class NewRecord {
     @Column(name="totalAmount")
     private Double totalAmount;
 
-    /*
+
+    @Lob
     @Column(name="receiptImage")
-    private String receiptImage;
-     */
+    private byte[] receiptImage;
+
 
     @Column(name="notes")
     private String notes;
@@ -71,15 +72,15 @@ public class NewRecord {
         this.totalAmount = totalAmount;
     }
 
-    /*
-    public String getReceiptImage() {
+
+    public byte[] getReceiptImage() {
         return receiptImage;
     }
 
-    public void setReceiptImage(String receiptImage) {
+    public void setReceiptImage(byte[] receiptImage) {
         this.receiptImage = receiptImage;
     }
-*/
+
     public String getNotes() {
         return notes;
     }

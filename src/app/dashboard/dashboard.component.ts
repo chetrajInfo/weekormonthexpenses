@@ -48,6 +48,8 @@ export class DashboardComponent {
       }
     );
   }
+
+  */
   
   onSubmit() {
     if (this.fileToUpload) {
@@ -62,11 +64,13 @@ export class DashboardComponent {
     } else {
       console.error('No file selected');
     }
+    this.save.resetForm();
+    this.cancel();
   }
-*/
-  
+
+/*  
 onSubmit() {
-  this.recordService.createRecord(this.record).subscribe(
+  this.recordService.createRecord(this.record, this.fileToUpload ).subscribe(
     response => console.log('Success!', response),
     error => console.error('Error!', error)
   );
@@ -74,6 +78,7 @@ onSubmit() {
   this.save.resetForm();
   this.cancel();
 }
+*/
 
   cancel() {
     // Reset the form values and file selection
@@ -86,5 +91,6 @@ onSubmit() {
     };
     this.fileToUpload = null;
   }
+  
   
 }
