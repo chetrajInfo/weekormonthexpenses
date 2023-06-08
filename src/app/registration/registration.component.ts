@@ -10,72 +10,56 @@ import { UserserviceService } from '../userservice.service';
 })
 export class RegistrationComponent {
 
-  
+
   isInputFocusedUser: boolean = false;
   isInputFocusedEmail: boolean = false;
   isInputFocusedPhone: boolean = false;
   isInputFocusedPass: boolean = false;
 
   emptyFields: boolean = false; // Add this new boolean
- 
+
 
   username: string = '';
   email: string = '';
   phone: string = '';
   pass: string = '';
 
-  facebookURL:string = "https://www.facebook.com/profile.php?id=100087381794234";
-  twitterURL:string ="https://twitter.com/?lang=en";
+  usernameTaken: boolean = false;
+
+  facebookURL: string = "https://www.facebook.com/profile.php?id=100087381794234";
+  twitterURL: string = "https://twitter.com/?lang=en";
 
   // ViewChild allows you to access a child component.
-// Pass in the component class or the name you set in the template.
+  // Pass in the component class or the name you set in the template.
   @ViewChild('form') form: NgForm | any;
 
 
-  /*
-saveData():void {
-    
-    this.submitted = true; // Add this line to set submitted to true when the form is submitted
-     
-    if(this.username == "" || this.phone =="" || this.email == "" || this.pass == ""){
-      this.emptyFields = true; // Set the flag to true if any field is empty
-    }else {
+  //constructor() { }
+  constructor(private userService: UserserviceService) { }
 
+  saveData(): void {
+    if (this.username == "" || this.phone == "" || this.email == "" || this.pass == "") {
+      this.emptyFields = true;
+    } else {
       this.userService.registerUser(this.form.value)
-    .subscribe(
-      response => console.log('Success!', response),
-      error => console.error('Error!', error)
-    );
-    this.emptyFields = false; // Otherwise, set it to false
-    this.form.resetForm(); // Reset the form state using @viewchild
+        .subscribe(
+          response => console.log('Success!', response),
+          error => console.error('Error!', error)
+        );
+      this.emptyFields = false;
+
+      // Reset the form state and your variables
+      this.form.resetForm();
+      this.resetVariables();
+    }
   }
-}
 
-*/
-
-saveData():void {
-  if(this.username == "" || this.phone =="" || this.email == "" || this.pass == ""){
-    this.emptyFields = true; 
-  } else {
-    this.userService.registerUser(this.form.value)
-      .subscribe(
-        response => console.log('Success!', response),
-        error => console.error('Error!', error)
-      );
-    this.emptyFields = false; 
-
-    // Reset the form state and your variables
-    this.form.resetForm();
-    this.resetVariables();
+  resetVariables(): void {
+    this.username = '';
+    this.email = '';
+    this.phone = '';
+    this.pass = '';
   }
-}
-
-resetVariables():void {
-  this.username = '';
-  this.email = '';
-  this.phone = '';
-  this.pass = '';
-}
 
 
   limitPhoneLength(event: any) {
@@ -84,39 +68,26 @@ resetVariables():void {
     let inputChar = String.fromCharCode(event.charCode); // Get the character from the event
 
     if (!pattern.test(inputChar)) { // If the character is non-numeric, prevent its input
-        event.preventDefault();
+      event.preventDefault();
     }
-    if ((this.phone && this.phone.toString().length >= 10 )) {
+    if ((this.phone && this.phone.toString().length >= 10)) {
       event.preventDefault();
     }
   }
 
-  usernameTaken: boolean = false;
-  /*
-
-checkUsername(): void {
-    this.userService.checkUsername(this.username).subscribe(taken => {
-        this.usernameTaken = taken;
-    });
-}
-*/
-
-
-checkUsername() {
-  this.usernameTaken = false; // Reset the flag
-  this.userService.checkUsername(this.username)
-    .subscribe(
-      isTaken => {
-        this.usernameTaken = isTaken; // Set the flag based on the response
-      },
-      error => console.error('Error!', error)
-    );
-}
 
 
 
-  //constructor() { }
-  constructor(private userService: UserserviceService){}
+  checkUsername() {
+    this.usernameTaken = false; // Reset the flag
+    this.userService.checkUsername(this.username)
+      .subscribe(
+        isTaken => {
+          this.usernameTaken = isTaken; // Set the flag based on the response
+        },
+        error => console.error('Error!', error)
+      );
+  }
 
 
 }

@@ -13,24 +13,24 @@ import { LoginService } from '../login.service';
 
 export class LoginComponent implements OnInit {
 
-username :string ='';
-pass : string ='';
-loginError: boolean = false; // Add this property
+  username: string = '';
+  pass: string = '';
+  loginError: boolean = false; // Add this property
 
   //constructor(private http: HttpClient, private router: Router) {}
 
-  constructor(private loginService: LoginService, private router: Router) {}
+  constructor(private loginService: LoginService, private router: Router) { }
 
   ngOnInit(): void {
-       // If the user is already logged in, redirect them to the dashboard
-       if (this.loginService.isLoggedIn()) {
-        this.router.navigate(['/dashboard']);
+    // If the user is already logged in, redirect them to the dashboard
+    if (this.loginService.isLoggedIn()) {
+      this.router.navigate(['/dashboard']);
 
-        
-      }
+
+    }
   }
 
-  onCheck(form : NgForm){
+  onCheck(form: NgForm) {
 
     this.loginService.userLogin(form.value).subscribe(
       response => {
@@ -41,32 +41,14 @@ loginError: boolean = false; // Add this property
       },
       error => {
         if (error.status === 401) {
-            // if the request fails with 401 Unauthorized, show an error message
-           // alert('Invalid username or password');
-           this.loginError = true; //this will make the *ngIf="loginError" of login.component.html page true if username or pass is wrong 
-           //and print the message with red color "Username and Password is incorrect in login form"
+          // if the request fails with 401 Unauthorized, show an error message
+          // alert('Invalid username or password');
+          this.loginError = true; //this will make the *ngIf="loginError" of login.component.html page true if username or pass is wrong 
+          //and print the message with red color "Username and Password is incorrect in login form"
         }
       }
     );
   }
 
-    //instead of calling the whole api for login here the above code will created first 
-    //service class and all the logic will be written there and we will import that 
-    //login service file into here
-
-    /*
-    this.http.post('http://localhost:8080/api/users/login', form.value).subscribe(
-      response => {
-        // navigate to dashboard if login is successful
-        this.router.navigate(['/dashboard']);
-      },
-      error => {
-        if (error.status === 401) {
-            // if the request fails with 401 Unauthorized, show an error message
-            alert('Invalid username or password');
-        }
-      }
-    );
-    */
-  }
+}
 
