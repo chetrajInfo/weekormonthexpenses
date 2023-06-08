@@ -173,3 +173,17 @@ label{
     font-weight: bold;
     cursor: pointer;
 }
+button{
+  height: 30px;
+  padding: 2px;
+  background-color: rgb(237, 195, 132);
+  color:white;
+  border: none;
+  font-size: 17px;
+  font-weight: bold;
+  cursor: pointer;
+}
+button:hover{
+  background-color: red;
+  border-radius: 5px;
+}

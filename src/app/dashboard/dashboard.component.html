@@ -3,7 +3,8 @@
     <div><a herf="">Update</a></div>
     <div><a href="">Search</a></div>
     <div><a href="">Delete</a></div>
-    <div><a routerLink="/login">Logout</a></div>
+    <div><a routerLink="/login">History</a></div>
+    <button (click)="onLogout()">Logout</button>
     </div>
 
     <section>
@@ -46,6 +47,7 @@
            <div class="click"><input type="submit" name="save" id="save" value="Save"></div> 
            <div class="click"><input type="button" (click)="cancel()"  name="save" id="cancel" value="Cancel"></div> 
         </div> 
+        <div></div>
     </form>
     
 

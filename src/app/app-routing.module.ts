@@ -3,12 +3,15 @@ import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './login/login.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { AuthGuard } from './auth.guard';
 
 const routes: Routes = [
   // Define a route for the login component
   {
     path: 'login',
-    component: LoginComponent
+    component: LoginComponent,
+    
+   
   },
   // Define a route for the register component
   {
@@ -20,11 +23,13 @@ const routes: Routes = [
     path: '',
     redirectTo: '/login',
     pathMatch: 'full'
+    
   },
   //Define a route for the Dashboard
   {
     path : 'dashboard',
-    component: DashboardComponent
+    component: DashboardComponent,
+    canActivate: [AuthGuard]
   }
 ];
 

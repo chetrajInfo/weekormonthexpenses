@@ -1,6 +1,8 @@
 import { Component, ViewChild } from '@angular/core';
 import { RecordService } from '../record.service';
 import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
+import { LoginService } from '../login.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -19,8 +21,16 @@ export class DashboardComponent {
 
   fileToUpload: File | null = null;
 
+  constructor(private recordService: RecordService, private loginService: LoginService, private router: Router) { }
 
-  constructor(private recordService: RecordService) { }
+  onLogout(): void {
+    // Call the logout method from LoginService
+    this.loginService.logout();
+
+    // Optionally, redirect the user to the login page
+    this.router.navigate(['/login']);
+  }
+ 
 
   @ViewChild('save') save: NgForm | any;
   

@@ -18,6 +18,11 @@
             <input type="submit" value="Submit"><br><br>
           </td>
         </tr>
+        <tr *ngIf="loginError">
+          <td colspan="2" style="color: red;">
+            Username or password is incorrect
+          </td>
+        </tr>
         <tr>
             <td>
                 <a href="">Foget username and password</a><br>
