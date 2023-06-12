@@ -31,6 +31,7 @@ export class DashboardComponent {
     this.router.navigate(['/login']);
   }
  
+  @ViewChild('fileInput') fileInput: any;
 
   @ViewChild('save') save: NgForm | any;
   
@@ -75,6 +76,8 @@ export class DashboardComponent {
       console.error('No file selected');
     }
     this.save.resetForm();
+    // Reset the file input element
+    this.fileInput.nativeElement.value = "";
     this.cancel();
   }
 

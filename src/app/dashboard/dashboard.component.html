@@ -3,7 +3,7 @@
     <div><a herf="">Update</a></div>
     <div><a href="">Search</a></div>
     <div><a href="">Delete</a></div>
-    <div><a routerLink="/login">History</a></div>
+    <div><a href="">History</a></div>
     <button (click)="onLogout()">Logout</button>
     </div>
 
@@ -34,7 +34,7 @@
 
             
             <label>Upload Receipt Image</label>
-            <input type="file" (change)="handleFileInput($any($event.target).files)" name="receipt" id="receipt">
+            <input type="file" (change)="handleFileInput($any($event.target).files)" name="receipt" id="receipt"  #fileInput>
             
 
 

@@ -6,11 +6,12 @@
 form{
     margin-bottom: -440px;
 }
-.contianer{
+/*
+.container{
     height:400px;
     width: 700px;
    
-}
+*/
 
 .login-table{
     align-items: center;
@@ -47,4 +48,15 @@ input[type="submit"]:hover {
 a{
     text-decoration: none;
     font-size: 14px;
+}
+
+@media screen and (max-width:800px) {
+    .login-table {
+        margin: 200px; /* remove margin */
+    }
+}
+@media screen and (max-width:600px) {
+    .login-table {
+        margin: 100px; /* remove margin */
+    }
 }
